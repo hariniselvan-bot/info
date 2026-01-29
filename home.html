@@ -319,6 +319,7 @@ gap:15px;
 }
 
 .primary{
+color: rgb(0, 0, 0);
 background:#2cff86;
 border:none;
 padding:14px 32px;
@@ -617,8 +618,7 @@ document.body.classList.toggle("menu-open");
 }
 </script>
 <section class="process">
-
-<div class="process-left">
+    <div class="process-left">
 <span class="mini">OUR MODEL</span>
 <h2>How we do</h2>
 <p>Save time and money with our powerful method.</p>
@@ -682,6 +682,15 @@ justify-content:space-between;
 padding:120px 8%;
 color:white;
 gap:80px;
+}
+@media(max-width:900px){
+.process-flow{
+grid-template-columns:1fr;
+}
+
+.process-left h2{
+font-size:38px;
+}
 }
 
 .process-left{
@@ -1213,8 +1222,8 @@ our clients unique requirements and challenges.
     </ul>
 
     <div class="store-buttons">
-<a href="404.html" class="primary">app store</a>
-<a href="404.html" class="secondary">play store</a>
+<a href="404.html" class="primary">Appstore</a>
+<a href="404.html" class="secondary">Playstore</a>
 
     </div>
 
@@ -1222,6 +1231,32 @@ our clients unique requirements and challenges.
 
 </section>
 <style>
+    @media(max-width:768px){
+
+/* remove big gap before OUR MODEL */
+.hero,
+.hero-split,
+section{
+min-height:auto !important;
+padding-top:60px !important;
+padding-bottom:60px !important;
+}
+
+/* fix background block space */
+body{
+overflow-x:hidden;
+}
+
+}
+@media(max-width:768px){
+.our-model,
+.solutions,
+.projects,
+section{
+margin-top:0 !important;
+}
+}
+
     .app-feature-area{
 display:flex;
 gap:80px;
