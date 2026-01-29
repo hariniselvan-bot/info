@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT Solutions</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{color:white}
+
+/* BACKGROUND VIDEO */
+video{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+object-fit:cover;
+z-index:-2;
+}
+.overlay{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,.65);
+z-index:-1;
+}
+
+/* NAVBAR */
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:14px 35px;
+background:#000000ee;
+position:fixed;
+width:100%;
+z-index:100;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:14px;
+}
+
+.brand img{
+width:150px;
+}
+
+.menu{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+.menu a{
+color:white;
+text-decoration:none;
+font-size:16px;
+}
+
+.menu li{position:relative;}
+
+.menu li::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-6px;
+width:0%;
+height:2px;
+background:#c6ff00;
+transition:.3s;
+}
+.menu li:hover::after{width:100%;}
+
+/* dropdown */
+.dropdown{
+position:absolute;
+top:100%;
+left:0;
+background:#111;
+border-radius:8px;
+min-width:150px;
+opacity:0;
+pointer-events:none;
+transform:translateY(10px);
+transition:.25s;
+}
+.menu li:hover .dropdown{
+opacity:1;
+pointer-events:auto;
+transform:translateY(0);
+}
+.dropdown a{padding:10px 18px;display:block}
+
+/* button */
+.buy{
+background:rgb(12, 62, 31);
+border:none;
+padding:10px 22px;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* hamburger */
+.hamburger{
+display:none;
+flex-direction:column;
+gap:6px;
+cursor:pointer;
+padding:12px;
+}
+
+.hamburger span{
+width:30px;
+height:3px;
+background:white;
+transition:.3s;
+}
+
+/* X animation */
+.hamburger.active span:nth-child(1){
+transform:rotate(45deg) translate(6px,7px);
+}
+.hamburger.active span:nth-child(2){opacity:0;}
+.hamburger.active span:nth-child(3){
+transform:rotate(-45deg) translate(7px,-7px);
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:60px;
+line-height:1.2;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 10px #c6ff00;}
+to{text-shadow:0 0 25px #c6ff00;}
+}
+
+/* slider */
+.slider{
+margin-top:25px;
+width:280px;
+height:170px;
+border-radius:14px;
+overflow:hidden;
+}
+
+.slider img{
+width:100%;
+height:100%;
+object-fit:cover;
+display:none;
+}
+.slider img.active{display:block;}
+
+/* MOBILE MENU */
+.mobile{
+display:none;
+}
+
+@media(max-width:900px){
+
+.menu,.buy{display:none;}
+.hamburger{display:flex;}
+
+.mobile{
+display:flex;
+flex-direction:column;
+position:fixed;
+top:0;
+left:-100%;
+width:100%;
+height:100vh;
+background:#111;
+padding:25px;
+transition:.35s;
+}
+
+.mobile.show{left:0;}
+
+.mobile-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:35px;
+}
+
+.mobile-top img{
+width:110px;   /* BIG LOGO MOBILE */
+}
+
+.close-btn{
+font-size:40px;
+cursor:pointer;
+}
+
+.mobile a{
+color:white;
+text-decoration:none;
+font-size:20px;
+}
+/* FIX MOBILE DROPDOWN POSITION */
+.mobile-dropdown{
+display:none;
+flex-direction:column;
+background:#1c1c1c;
+border-radius:8px;
+margin-top:20px;
+align-items:center;   /* centers Home 2 */
+width:100%;
+}
+/* BIGGER MOBILE DROPDOWN TEXT */
+.mobile-dropdown a{
+font-size:20px;      /* bigger */
+font-weight:500;
+padding:14px 0;
+color:white;
+text-decoration:none;
+}
+
+.mobile-dropdown a{
+color:white;
+text-decoration:none;
+padding:10px 0;
+width:100%;
+text-align:center;
+}
+
+.mobile ul{
+list-style:none;
+display:flex;
+flex-direction:column;
+gap:20px;
+text-align:center;
+}
+/* BIGGER MOBILE HOME TEXT */
+.mobile ul li{
+font-size:22px;
+font-weight:600;
+color:white;
+}
+/* HERO FADE IN */
+.hero h1{
+animation:fadeUp 1.2s ease forwards, glow 2s infinite alternate;
+opacity:0;
+}
+
+@keyframes fadeUp{
+from{opacity:0; transform:translateY(40px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+/* BUTTON HOVER GLOW */
+.buy:hover{
+box-shadow:0 0 15px #2cff86;
+transform:scale(1.05);
+transition:.3s;
+}
+
+/* SLIDER FADE */
+.slider img{
+transition:opacity .6s ease;
+}
+
+.mobile-info{
+margin-top:auto;
+text-align:center;
+font: size 20px;px;
+opacity:.8;
+}
+}
+.hero-split{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:120px 8%;
+gap:80px;
+color:white;
+}
+
+.hero-left{
+max-width:600px;
+}
+
+.mini{
+letter-spacing:3px;
+color:#c6ff00;
+font-size:13px;
+}
+
+.hero-left h1{
+font-size:64px;
+line-height:1.1;
+margin:20px 0;
+}
+
+.hero-left p{
+opacity:.85;
+font-size:18px;
+}
+
+.hero-buttons{
+margin-top:30px;
+display:flex;
+gap:15px;
+}
+
+.primary{
+background:#2cff86;
+border:none;
+padding:14px 32px;
+border-radius:40px;
+font-size:16px;
+cursor:pointer;
+}
+
+.secondary{
+background:#144d20;
+border:none;
+padding:14px 32px;
+border-radius:40px;
+color:white;
+cursor:pointer;
+}
+
+.hero-right{
+position:relative;
+}
+
+.hero-image{
+width:430px;
+border-radius:18px;
+}
+
+.card{
+position:absolute;
+background:#111;
+padding:16px 22px;
+border-radius:14px;
+font-size:15px;
+box-shadow:0 0 20px #000;
+animation:float 4s ease-in-out infinite;
+}
+
+.experience{
+top:20%;
+left:-120px;
+}
+
+.experts{
+bottom:35%;
+left:-80px;
+}
+
+.reviews{
+bottom:10%;
+right:-60px;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
+}
+
+/* MOBILE */
+@media(max-width:900px){
+.hero-split{
+flex-direction:column;
+text-align:center;
+}
+.hero-image{
+width:90%;
+}
+.card{
+position:static;
+margin:12px auto;
+animation:none;
+}
+}
+.hamburger{
+position:fixed;
+top:10px;
+right:15px;
+z-index:1000;
+}
+.mobile{
+display:flex;
+flex-direction:column;
+position:fixed;
+top:0;
+left:-100%;
+width:100%;
+height:100vh;
+background:#111;
+padding:80px 25px 25px;
+transition:.35s;
+overflow:hidden;   /* NO SCROLL */
+}
+.mobile{
+display:flex;
+flex-direction:column;
+position:fixed;
+top:0;
+left:-100%;
+width:100%;
+height:100vh;
+background:#111;
+padding:90px 25px 25px;
+transition:.35s ease;
+z-index:10000;   /* VERY IMPORTANT */
+overflow:hidden;
+}
+body.menu-open{
+overflow:hidden;
+}
+
+.mobile-info{
+margin-top:40px;
+padding-top:30px;
+border-top:1px solid #333;
+text-align:center;
+font-size:14px;
+opacity:.85;
+}
+.mobile{
+display:flex;
+flex-direction:column;
+position:fixed;
+top:0;
+left:-100%;
+width:100%;
+height:100vh;
+background:#111;
+padding:20px;
+transition:.35s ease;
+z-index:10000;
+}
+
+.mobile.show{
+left:0;
+}
+
+/* TOP BAR */
+.mobile-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+/* CENTER MENU */
+.mobile ul{
+flex:1;
+display:flex;
+flex-direction:column;
+justify-content:center;
+gap:22px;
+list-style:none;
+text-align:center;
+}
+
+/* BOTTOM INFO */
+.mobile-info{
+border-top:1px solid #333;
+padding-top:18px;
+text-align:center;
+font-size:14px;
+opacity:.85;
+}
+.primary,.secondary{
+display:inline-block;
+text-decoration:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<video autoplay muted loop>
+<source src="bg.mp4">
+</video>
+<div class="overlay"></div>
+
+<nav>
+
+<div class="brand">
+<img src="logo-2.webp">
+</div>
+
+<ul class="menu">
+<li>Home ▾
+<div class="dropdown"><a href="home2.html">Home 2</a></div>
+</li>
+<li><a href="4004.html">Demos</a></li>
+<li><a href="4004.html">Inner Pages</a></li>
+<li><a href="4004.html">Features</a></li>
+<li><a href="4004.html">Testimonials</a></li>
+</ul>
+
+<div class="hamburger" id="hamburger" onclick="openMenu()">
+<span></span><span></span><span></span>
+</div>
+
+<a href="4004.html"><button class="buy">Buy Now</button></a>
+
+</nav>
+
+<!-- MOBILE MENU -->
+
+<div class="mobile" id="mobileMenu">
+
+<div class="mobile-top">
+<img src="logo-2.webp">
+<div class="close-btn" onclick="openMenu()">✕</div>
+</div>
+
+<ul>
+
+<li onclick="toggleDrop()" style="cursor:pointer;">
+Home ▾
+<div class="mobile-dropdown" id="mobileDrop">
+<a href="home2.html">Home 2</a>
+</div>
+</li>
+
+<li><a href="4004.html">Demos</a></li>
+<li><a href="4004.html">Inner Pages</a></li>
+<li><a href="4004.html">Features</a></li>
+<li><a href="4004.html">Testimonials</a></li>
+
+</ul>
+
+<div class="mobile-info">
+MMR COMPLEX, SALEM, Tamil Nadu 636008<br>
+📞 +91 70107 92745
+</div>
+
+</div>
+<section class="hero-split">
+
+<div class="hero-left">
+<span class="mini">EMPOWERMENT</span>
+
+<h1>Seamless IT for your business,<br>boosting your growth.</h1>
+
+<p>
+We provide the expertise and support to propel your business
+forward in the digital landscape.
+</p>
+
+<div class="hero-buttons">
+<a href="404.html" class="primary">Learn More</a>
+<a href="404.html" class="secondary">Let's Talk →</a>
+
+</div>
+</div>
+
+<div class="hero-right">
+
+<img src="12.webp" class="hero-image">
+
+<div class="card experience">
++8 Years Experience
+</div>
+
+<div class="card experts">
+Meet Our Experts
+</div>
+
+<div class="card reviews">
+★★★★★ 3245 Reviews
+</div>
+
+</div>
+
+</section>
+
+
+<script>
+function openMenu(){
+document.getElementById("mobileMenu").classList.toggle("show");
+document.getElementById("hamburger").classList.toggle("active");
+}
+
+let slides=document.querySelectorAll(".slider img");
+let i=0;
+setInterval(()=>{
+slides[i].classList.remove("active");
+i=(i+1)%slides.length;
+slides[i].classList.add("active");
+},2500);
+</script>
+<script>
+function toggleDrop(){
+let d = document.getElementById("mobileDrop");
+d.style.display = d.style.display === "flex" ? "none" : "flex";
+}
+</script>
+<script>
+function openMenu(){
+let menu = document.getElementById("mobileMenu");
+menu.classList.toggle("show");
+document.body.classList.toggle("menu-open");
+}
+</script>
+<section class="process">
+
+<div class="process-left">
+<span class="mini">OUR MODEL</span>
+<h2>How we do</h2>
+<p>Save time and money with our powerful method.</p>
+
+<a href="404.html" class="primary">Learn More</a></div>
+<div class="process-flow">
+
+<div class="step">
+<span>💡</span>
+<b>Brainstorming</b>
+<p>Ideas</p>
+</div>
+
+<div class="line"></div>
+
+<div class="step">
+<span>🎨</span>
+<b>Product</b>
+<p>Design</p>
+</div>
+
+<div class="line"></div>
+
+<div class="step">
+<span>💻</span>
+<b>Front-End</b>
+<p>Development</p>
+</div>
+
+<div class="line vertical"></div>
+
+<div class="step">
+<span>📈</span>
+<b>SEO</b>
+<p>Optimization</p>
+</div>
+
+<div class="line"></div>
+
+<div class="step">
+<span>⚙</span>
+<b>Back-End</b>
+<p>Development</p>
+</div>
+
+<div class="line vertical"></div>
+
+<div class="step">
+<span>📢</span>
+<b>Digital</b>
+<p>Marketing</p>
+</div>
+
+
+</div>
+</section>
+<style>
+    .process{
+display:flex;
+justify-content:space-between;
+padding:120px 8%;
+color:white;
+gap:80px;
+}
+
+.process-left{
+max-width:350px;
+}
+.process-left p{
+margin-bottom:50px;   /* space between text and button */
+}
+
+.process-left .primary{
+margin-top:20px;     /* pushes button slightly down */
+}
+
+.process h2{
+font-size:48px;
+margin:10px 0;
+}
+
+.process-flow{
+display:grid;
+grid-template-columns:repeat(3, 1fr);
+gap:80px 90px;
+align-items:center;
+position:relative;
+}
+.step{
+width:230px;
+margin:auto;
+}
+.line{
+position:absolute;
+border-top:2px dashed #000000;
+width:90px;
+}
+.process{
+display:grid;
+grid-template-columns:380px 1fr;
+align-items:center;
+padding:120px 8%;
+gap:80px;
+background:#263217;
+;
+color:white;
+}
+.process-left{
+margin-top:140px;   /* aligns with middle cards */
+}
+
+
+.line.one{top:80px; left:260px;}
+.line.two{top:80px; left:580px;}
+
+.line.down1{
+height:80px;
+border-left:2px dashed #2cff86;
+top:150px;
+left:700px;
+}
+
+.line.down2{
+height:80px;
+border-left:2px dashed #2cff86;
+top:350px;
+left:380px;
+}
+
+
+.step{
+background:#3c5c49;
+border:1px solid #2cff86;
+padding:18px 26px;
+border-radius:16px;
+text-align:center;
+min-width:190px;
+box-shadow:0 0 20px #2cff8640;
+}
+
+.step span{
+font-size:26px;
+display:block;
+margin-bottom:8px;
+}
+
+.step b{
+color:#2cff86;
+}
+
+.line{
+width:40px;
+border-top:2px dashed #2cff86;
+}
+
+.vertical{
+grid-column:3;
+height:60px;
+border-left:2px dashed #2cff86;
+border-top:none;
+}
+
+@media(max-width:900px){
+.process{
+flex-direction:column;
+}
+.process-flow{
+grid-template-columns:1fr;
+}
+.line,.vertical{display:none;}
+}
+.process{
+display:flex;
+justify-content:space-between;
+padding:120px 8%;
+color:white;
+gap:80px;
+background:#0d3716;   /* PURE BLACK */
+}
+.step{
+background:#0b140f;
+border:1px solid #2cff86;
+box-shadow:0 0 25px #2cff8640;
+}
+</style></body>
+</html>
+<section class="brand-strip">
+
+<video autoplay muted loop class="brand-video">
+<source src="bg.mp4" type="video/mp4">
+</video>
+
+<div class="brand-overlay"></div>
+
+<div class="marquee">
+<div class="track">
+
+<img src="11.webp">
+<img src="13.webp">
+<img src="14.webp">
+<img src="d.webp">
+<img src="11.webp">
+<img src="13.webp">
+<img src="14.webp">
+<img src="d.webp">
+</div>
+</div>
+
+</section>
+<style>
+.brand-strip{
+position:relative;
+overflow:hidden;
+padding:80px 0;
+}
+
+.brand-video{
+position:absolute;
+top:0;left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+.brand-overlay{
+position:absolute;
+top:0;left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.7);
+z-index:-1;
+}
+
+.marquee{
+overflow:hidden;
+white-space:nowrap;
+}
+
+.track{
+display:flex;
+gap:60px;
+animation:scroll 18s linear infinite;
+}
+
+.track img{
+height:140px;            /* VERY BIG */
+padding:40px 90px;      /* card feel */
+border-radius:24px;
+background:white;
+box-shadow:0 0 30px #000;
+}
+
+
+@keyframes scroll{
+from{transform:translateX(0);}
+to{transform:translateX(-50%);}
+}
+</style>
+<section class="services">
+
+<div class="services-head">
+<div>
+<span class="mini">WHAT WE'RE OFFERING</span>
+<h2>Dealing in all professional IT services.</h2>
+</div>
+
+<p>
+One fundamental aspect of IT services is infrastructure management.
+This involves the design, implementation, and maintenance of the
+hardware, software, networks, and servers.
+</p>
+</div>
+
+<div class="services-grid">
+
+<div class="service-card">
+<div class="icon">⚡</div>
+<h3>Development</h3>
+<p>Our development is pixel perfect in all ways.</p>
+</div>
+
+<div class="service-card">
+<div class="icon">🛒</div>
+<h3>Woo Commerce</h3>
+<p>We have a best team for your shopping websites.</p>
+</div>
+
+<div class="service-card">
+<div class="icon">💼</div>
+<h3>CRM Solutions</h3>
+<p>We enhance customer experiences for success.</p>
+</div>
+
+<div class="service-card">
+<div class="icon">🎨</div>
+<h3>Web Design</h3>
+<p>We create vibrant, intuitive and minimalist web.</p>
+</div>
+
+<div class="service-card highlight">
+<span class="badge">Free!</span>
+<div class="icon">🛠</div>
+<h3>IT Support</h3>
+<p>We offer expert assistance for your IT issues.</p>
+</div>
+
+</div>
+</section>
+<style>
+    .services{
+background:linear-gradient(180deg,#050505,#0e1a12);
+padding:120px 8%;
+color:white;
+}
+
+.services-head{
+display:flex;
+justify-content:space-between;
+gap:80px;
+margin-bottom:70px;
+}
+
+.services-head h2{
+font-size:56px;
+margin-top:10px;
+}
+
+.services-head p{
+max-width:420px;
+opacity:.85;
+font-size:17px;
+}
+
+.services-grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:30px;
+}
+
+.service-card{
+background:#0b140f;
+border:1px solid #2cff86;
+border-radius:18px;
+padding:36px 28px;
+box-shadow:0 0 25px #2cff8630;
+transition:.35s;
+position:relative;
+}
+
+.service-card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 45px #2cff8670;
+}
+
+.icon{
+font-size:32px;
+margin-bottom:18px;
+color:#2cff86;
+}
+
+.service-card h3{
+margin-bottom:10px;
+}
+
+.service-card p{
+opacity:.8;
+font-size:15px;
+}
+
+.highlight{
+border-color:#2cff86;
+}
+
+.badge{
+position:absolute;
+top:18px;
+right:18px;
+background:#2cff86;
+color:black;
+padding:6px 14px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+.services-head{
+flex-direction:column;
+}
+.services-grid{
+grid-template-columns:1fr 1fr;
+}
+}
+
+@media(max-width:600px){
+.services-grid{
+grid-template-columns:1fr;
+}
+.services-head h2{
+font-size:40px;
+}
+}
+.services{
+background:linear-gradient(
+180deg,
+#030303 0%,
+#0a1510 50%,
+#030303 100%
+);
+padding:120px 8%;
+color:white;
+}
+.project-wrap{
+display:flex;
+gap:70px;
+padding:120px 8%;
+background:#14270d;
+align-items:flex-start;
+}
+
+.project-left{
+max-width:480px;
+}
+
+.project-mini{
+letter-spacing:3px;
+color:#1e5bff;
+font-size:12px;
+font-weight:600;
+}
+
+.project-left h2{
+font-size:48px;
+margin:18px 0;
+}
+
+.project-left p{
+color:#eeeeee;
+margin-bottom:25px;
+}
+
+.project-points{
+list-style:none;
+padding:0;
+}
+
+.project-points li{
+margin-bottom:14px;
+color:#eaeaea;
+font-size:16px;
+}
+
+.project-right{
+display:flex;
+gap:26px;
+}
+
+.project-box{
+border-radius:22px;
+padding:32px;
+width:260px;
+height:380px;
+position:relative;
+overflow:hidden;
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.project-box:hover{
+transform:translateY(-10px);
+}
+
+.project-box h3{
+font-size:26px;
+margin:0;
+}
+
+.dark-box{
+background:#111;
+color:white;
+}
+
+.soft-box{
+background:linear-gradient(135deg,#843b3b,#572121);
+}
+
+.white-box{
+background:#3a083c;
+}
+
+.project-box img{
+position:absolute;
+bottom:-10px;
+right:-10px;
+width:200px;
+border-radius:20px;
+}
+
+@media(max-width:900px){
+.project-wrap{
+flex-direction:column;
+}
+.project-right{
+flex-direction:column;
+}
+.project-box{
+width:100%;
+}
+}
+.project-box img{
+width:70%;
+border-radius:18px;
+margin-top:30px;
+}
+.project-box{
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+</style>
+<section class="project-wrap">
+
+<div class="project-left">
+
+<span class="project-mini">PROJECTS</span>
+<h2>Showcase of our recognized work</h2>
+
+<p>
+Our collaborative approach ensures that we truly understand
+our clients unique requirements and challenges.
+</p>
+
+<ul class="project-points">
+<li>✔ Managed Services and Products</li>
+<li>✔ Flexibility and Adaptability</li>
+<li>✔ Competitive Advantage</li>
+</ul>
+
+</div>
+
+<div class="project-right">
+
+<div class="project-box dark-box">
+<h3>E-commerce platform development.</h3>
+</div>
+
+<div class="project-box soft-box">
+<h3>Software as a Service integration</h3>
+</div>
+
+<div class="project-box white-box">
+<h3>Mobile Platform Development</h3>
+</div>
+
+</div>
+
+</section>
+<section class="app-feature-area">
+
+  <div class="app-panels">
+
+    <div class="app-panel light">
+      <h2>Start your project from your pocket.</h2>
+      <img src="software.webp" class="mockup">
+    </div>
+
+    <div class="app-panel light">
+      <h2>Available on all responsive devices.</h2>
+      <img src="mob.webp" class="mockup">
+    </div>
+
+  </div>
+
+  <div class="app-content">
+
+    <span class="mini-title">FEATURED PRODUCT</span>
+
+    <h1>Seamless productivity with our new app</h1>
+
+    <p>
+      Download Slack and experience a new era of organization and accomplishment.
+    </p>
+
+    <ul class="app-points">
+      <li>PPD Development</li>
+      <li>Easy to Use</li>
+    </ul>
+
+    <div class="store-buttons">
+<a href="404.html" class="primary">app store</a>
+<a href="404.html" class="secondary">play store</a>
+
+    </div>
+
+  </div>
+
+</section>
+<style>
+    .app-feature-area{
+display:flex;
+gap:80px;
+padding:120px 8%;
+background:linear-gradient(180deg,#000000,#000000);
+color:white;
+align-items:center;
+}
+
+.app-panels{
+display:flex;
+gap:40px;
+}
+
+.app-panel{
+width:280px;
+padding:40px 30px;
+border-radius:24px;
+background:white;
+color:#111;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+.app-panel h2{
+font-size:28px;
+line-height:1.2;
+}
+
+.mockup{
+width:100%;
+margin-top:40px;
+}
+
+.app-content{
+max-width:480px;
+}
+
+.mini-title{
+color:#4f7cff;
+letter-spacing:3px;
+font-size:13px;
+}
+
+.app-content h1{
+font-size:48px;
+margin:20px 0;
+line-height:1.1;
+}
+
+.app-content p{
+opacity:.85;
+margin-bottom:25px;
+}
+
+.app-points{
+list-style:none;
+margin-bottom:30px;
+}
+
+.app-points li{
+margin-bottom:12px;
+padding-left:26px;
+position:relative;
+}
+
+.app-points li::before{
+content:"✔";
+position:absolute;
+left:0;
+color:#4f7cff;
+}
+
+.store-buttons{
+display:flex;
+gap:16px;
+}
+
+.store{
+background:#000;
+color:white;
+border:1px solid #333;
+padding:14px 28px;
+border-radius:14px;
+cursor:pointer;
+}
+
+.store:hover{
+transform:translateY(-4px);
+transition:.3s;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+.app-feature-area{
+flex-direction:column;
+text-align:center;
+}
+
+.app-panels{
+flex-direction:column;
+}
+}
+.cross-ribbon{
+position:relative;
+height:280px;
+overflow:hidden;
+background:#14270d;
+}
+
+/* Ribbons */
+
+.ribbon{
+position:absolute;
+width:130%;
+left:-15%;
+padding:18px 0;
+background:#1f8c8b;
+}
+
+.ribbon-left{
+top:50%;
+transform:translateY(-50%) rotate(-6deg);
+}
+
+.ribbon-right{
+top:50%;
+transform:translateY(-50%) rotate(6deg);
+background:white;
+}
+
+.ribbon-right .ribbon-flow{
+color:#1f8c8b;
+}
+
+/* Moving text */
+
+.ribbon-flow{
+white-space:nowrap;
+font-size:22px;
+font-weight:600;
+color:white;
+display:inline-block;
+animation:move 18s linear infinite;
+}
+
+.ribbon-flow.reverse{
+animation:moveBack 22s linear infinite;
+}
+
+/* Animations */
+
+@keyframes move{
+from{transform:translateX(0);}
+to{transform:translateX(-50%);}
+}
+
+@keyframes moveBack{
+from{transform:translateX(-50%);}
+to{transform:translateX(0);}
+}
+
+</style>
+<section class="cross-ribbon">
+
+  <div class="ribbon ribbon-left">
+    <div class="ribbon-flow">
+      Innovation ✦ Success ✦ Leadership ✦ Enterprise ✦ Growth ✦ Results ✦
+      Innovation ✦ Success ✦ Leadership ✦ Enterprise ✦ Growth ✦ Results ✦
+    </div>
+  </div>
+
+  <div class="ribbon ribbon-right">
+    <div class="ribbon-flow reverse">
+      Innovation ✦ Results ✦ Corporate ✦ Growth ✦ Enterprise ✦ Leadership ✦
+      Innovation ✦ Results ✦ Corporate ✦ Growth ✦ Enterprise ✦ Leadership ✦
+    </div>
+  </div>
+
+</section>
+<section class="solutions">
+
+  <div class="solutions-head">
+    <span class="tag">OUR SOLUTIONS</span>
+
+    <div class="title-row">
+      <h2>Tailor Business Solutions<br>for Corporates.</h2>
+
+      <a href="404.html" class="explore-btn">
+        Explore More →
+      </a>
+    </div>
+  </div>
+
+  <div class="solution-grid">
+
+    <div class="solution-box">
+      <div class="icon-circle">❄</div>
+      <h3>Training Development Programs</h3>
+      <p>Training Development Programs designed empower employees with skills, knowledge.</p>
+    </div>
+
+    <div class="solution-box">
+      <div class="icon-circle">⬛⬜</div>
+      <h3>Business Strategy Development</h3>
+      <p>Through a combination of data-driven insights and innovative approaches business.</p>
+    </div>
+
+    <div class="solution-box">
+      <div class="icon-circle">◔</div>
+      <h3>Customer Experience Solutions</h3>
+      <p>Developing personalized customer journeys to increase satisfaction and loyalty.</p>
+    </div>
+
+    <div class="solution-box">
+      <div class="icon-circle">➜</div>
+      <h3>Sustainability & ESG Consulting</h3>
+      <p>Provide tailored strategies that not only drive long-term value but also build trust.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<style>
+    .solutions{
+background:#000000;
+padding:90px 8%;
+}
+
+.tag{
+color:#178f86;
+font-size:13px;
+letter-spacing:2px;
+font-weight:600;
+}
+
+.title-row{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-top:15px;
+gap:30px;
+flex-wrap:wrap;
+}
+
+.title-row h2{
+font-size:48px;
+line-height:1.1;
+color:#ffffff;
+}
+
+.explore-btn{
+background:#178f86;
+color:white;
+padding:14px 30px;
+border-radius:40px;
+text-decoration:none;
+font-weight:600;
+transition:.3s;
+}
+
+.explore-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+/* cards */
+
+.solution-grid{
+margin-top:60px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:28px;
+}
+
+.solution-box{
+background:white;
+border-radius:18px;
+padding:40px 28px;
+box-shadow:0 10px 25px rgba(0,0,0,.04);
+transition:.3s;
+text-align:center;
+}
+
+.solution-box:hover{
+transform:translateY(-8px);
+box-shadow:0 18px 40px rgba(0,0,0,.08);
+}
+
+.icon-circle{
+width:70px;
+height:70px;
+border-radius:50%;
+background:#0e2210;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+color:#178f86;
+margin:0 auto 22px;
+}
+
+.solution-box h3{
+font-size:20px;
+margin-bottom:12px;
+color:#111;
+}
+
+.solution-box p{
+font-size:15px;
+color:#666;
+line-height:1.6;
+}
+
+/* mobile */
+
+@media(max-width:768px){
+.title-row h2{
+font-size:36px;
+}
+}
+
+    .insight-area{
+padding:120px 8%;
+background:#000000;
+}
+
+.blog-title{
+text-align:center;
+font-size:46px;
+margin-bottom:70px;
+}
+
+.blog-layout{
+display:grid;
+grid-template-columns:1.4fr 1fr;
+gap:40px;
+}
+
+/* BIG POST */
+
+.blog-feature{
+background:rgb(21, 62, 24);
+padding:26px;
+border-radius:18px;
+}
+
+.blog-img-wrap{
+position:relative;
+border-radius:14px;
+overflow:hidden;
+}
+
+.blog-img-wrap img{
+width:100%;
+height:320px;
+object-fit:cover;
+}
+
+.date-badge{
+position:absolute;
+bottom:16px;
+right:16px;
+background:#111;
+color:white;
+padding:14px 16px;
+border-radius:12px;
+text-align:center;
+font-weight:600;
+}
+
+.date-badge.small{
+padding:8px 12px;
+font-size:12px;
+}
+
+.blog-tag{
+display:inline-block;
+margin:18px 0 12px;
+font-size:13px;
+padding:4px 10px;
+border-radius:20px;
+border:1px solid #ccc;
+}
+
+.blog-feature h3{
+font-size:28px;
+margin-bottom:10px;
+}
+
+.blog-feature p{
+opacity:.75;
+margin-bottom:16px;
+}
+
+/* SIDE POSTS */
+
+.blog-stack{
+display:flex;
+flex-direction:column;
+gap:26px;
+}
+
+.blog-mini{
+display:flex;
+gap:18px;
+background:rgb(61, 88, 54);
+padding:18px;
+border-radius:18px;
+}
+
+.mini-img{
+position:relative;
+width:160px;
+border-radius:14px;
+overflow:hidden;
+}
+
+.mini-img img{
+width:100%;
+height:140px;
+object-fit:cover;
+}
+
+.blog-mini h4{
+font-size:20px;
+margin:8px 0 10px;
+}
+
+/* READ LINK */
+
+.read-btn{
+color:#111;
+font-weight:600;
+cursor:pointer;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+.blog-layout{
+grid-template-columns:1fr;
+}
+}
+
+</style>
+<footer class="stackly-footer">
+
+  <!-- Newsletter -->
+  <div class="newsletter-box">
+    <h2>Subscribe to Our Newsletter.</h2>
+
+    <div class="subscribe-row">
+      <input type="email" placeholder="Enter email">
+<a href="404.html" class="subscribe-btn">Subscribe Now →</a>
+    </div>
+
+    <label class="terms">
+      <input type="checkbox"> Agree to our Terms & Condition?
+    </label>
+  </div>
+
+  <!-- Footer content -->
+  <div class="footer-grid">
+
+    <!-- Brand -->
+    <div class="footer-brand">
+      <h3>STACKLY</h3>
+      <p>
+        Developing personalized customer journeys to increase
+        satisfaction & loyalty of our expansion.
+      </p>
+
+      <div class="awards">
+        🏆 18 Clutch Awards &nbsp; ⭐ 5 Awwwards
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <ul>
+  <li><a href="404.html">Home</a></li>
+ <li><a href="4004.html">Demos</a></li>
+<li><a href="4004.html">Inner Pages</a></li>
+<li><a href="4004.html">Features</a></li>
+<li><a href="4004.html">Testimonials</a></li>
+</ul>
+
+      </ul>
+    </div>
+
+    <!-- Resources -->
+    <div>
+      <h4>Resources</h4>
+      <ul>
+        <ul>
+  <li><a href="404.html">Contact us</a></li>
+  <li><a href="404.html">Team Member</a></li>
+  <li><a href="404.html">Recognitions</a></li>
+  <li><a href="404.html">Careers</a></li>
+  <li><a href="404.html">News</a></li>
+  <li><a href="404.html">Feedback</a></li>
+</ul>
+
+      </ul>
+    </div>
+
+    <!-- Office -->
+    <div>
+      <h4>Our Office</h4>
+      <p>Stackly, Salem</p>
+      <p><b>P:</b> +91 70107 92745</p>
+      <p><b>M:</b> support@stackly.com</p>
+      <p>Mon–Fri 10am–10pm</p>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="footer-bottom">
+    <span>© 2025 Stackly All right reserved</span>
+    <span>Privacy Policy | Terms & Condition</span>
+  </div>
+
+</footer>
+<style>
+    .stackly-footer{
+  background:radial-gradient(circle at top,#1b3a3a,#051515);
+  color:#cfdede;
+  padding:80px 8% 30px;
+  font-family:Arial, sans-serif;
+}
+
+/* Newsletter */
+
+.newsletter-box{
+  background:#2a3d40;
+  padding:40px;
+  border-radius:18px;
+  margin-bottom:70px;
+}
+
+.newsletter-box h2{
+  font-size:34px;
+  margin-bottom:25px;
+  color:white;
+}
+.subscribe-btn{
+  display:inline-block;
+  background:#2ce0d1;
+  color:#000;
+  padding:12px 26px;
+  border-radius:30px;
+  text-decoration:none;
+  font-weight:600;
+  transition:.3s;
+}
+
+.subscribe-btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 15px #2ce0d1;
+}
+
+.subscribe-row{
+  display:flex;
+  gap:15px;
+}
+.footer-grid a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.footer-grid a:hover{
+  color:#2ce0d1;
+}
+
+.subscribe-row input{
+  flex:1;
+  padding:14px 18px;
+  border-radius:30px;
+  border:none;
+  outline:none;
+  background:#40565a;
+  color:white;
+}
+
+.subscribe-row button{
+  background:#2ce0d1;
+  border:none;
+  padding:14px 26px;
+  border-radius:30px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.terms{
+  display:block;
+  margin-top:15px;
+  font-size:14px;
+  opacity:.8;
+}
+
+/* Grid */
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:60px;
+}
+
+.footer-brand h3{
+  color:#2ce0d1;
+  margin-bottom:15px;
+}
+
+.footer-grid h4{
+  color:white;
+  margin-bottom:15px;
+}
+
+.footer-grid ul{
+  list-style:none;
+  padding:0;
+}
+
+.footer-grid li{
+  margin-bottom:10px;
+  opacity:.85;
+  cursor:pointer;
+}
+
+.footer-grid li:hover{
+  color:#2ce0d1;
+}
+
+.awards{
+  margin-top:25px;
+  opacity:.8;
+}
+
+/* Bottom */
+
+.footer-bottom{
+  border-top:1px solid #1f3a3a;
+  margin-top:60px;
+  padding-top:20px;
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  opacity:.7;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+  .footer-grid{
+    grid-template-columns:1fr;
+  }
+  .subscribe-row{
+    flex-direction:column;
+  }
+}
+
+</style>

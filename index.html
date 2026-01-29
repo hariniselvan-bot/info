@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Loading...</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:#081a1c;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+/* Loader wrapper */
+.loader-wrap{
+text-align:center;
+}
+
+/* LOGO */
+.loader-wrap img{
+width:140px;
+margin-bottom:25px;
+filter:drop-shadow(0 0 10px #2ce0d1);
+}
+
+/* Loading text */
+.loading-text{
+color:#cfdede;
+font-size:20px;
+letter-spacing:1px;
+margin-top:10px;
+}
+
+/* glowing line */
+.line{
+width:160px;
+height:3px;
+background:#0f2f32;
+border-radius:20px;
+overflow:hidden;
+margin:10px auto 0;
+position:relative;
+}
+
+.line::before{
+content:"";
+position:absolute;
+left:-50%;
+top:0;
+width:50%;
+height:100%;
+background:#2ce0d1;
+box-shadow:0 0 15px #2ce0d1;
+animation:load 1.5s infinite linear;
+}
+
+@keyframes load{
+from{left:-50%;}
+to{left:100%;}
+}
+
+/* soft glow bg */
+body::after{
+content:"";
+position:absolute;
+width:600px;
+height:600px;
+background:#2ce0d122;
+filter:blur(160px);
+border-radius:50%;
+}
+</style>
+</head>
+
+<body>
+
+<div class="loader-wrap">
+<img src="logo-2.webp" alt="Stackly">
+<div class="line"></div>
+<div class="loading-text">Loading...</div>
+</div>
+
+<!-- AUTO REDIRECT SCRIPT -->
+<script>
+setTimeout(() => {
+  window.location.href = "home.html";   // change if needed
+}, 3000); // 3 seconds
+</script>
+
+</body>
+</html>
